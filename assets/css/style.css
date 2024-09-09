@@ -51,7 +51,7 @@ input{
     transform: translate(-50%, -50%);
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     padding: 1.5rem;
