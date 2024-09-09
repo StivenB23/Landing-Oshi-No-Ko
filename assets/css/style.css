@@ -33,6 +33,88 @@ a:hover {
     font-weight: 600;
 
 }
+button{
+    border: none;
+    outline: none;
+}
+input{
+    outline: none;
+}
+
+/* Modal */
+
+.modal {
+    position: absolute;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    
+    z-index: 20;
+}
+.modal__content h2{
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.icon-close-close{
+    display: flex;
+    justify-content: end;
+    font-size: 1.5rem;
+    color: #8b8b8b;
+    cursor: pointer;
+
+}
+.modal__content--message{
+    text-align: justify;
+}
+
+.codeForm{
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 0 5px;
+    align-items: center;
+    
+}
+.codeForm input{
+    width: 5%;
+    padding: 10px;
+    border: none;
+    font-weight: 800;
+    font-size: 20px;
+    border-bottom: 5px solid rgb(255, 33, 118);
+    /* border-radius: 5px; */
+}
+
+.button__primary {
+    background-color: #fd1868;
+    padding: .2rem 1rem;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.button__primary:hover {
+    background-color: #d2084f;
+}
+
+.button__secondary {
+    background-color: #121212;
+    padding: .2rem 1rem;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #fff;
+}
+.button__secondary:hover {
+    background-color: #ffffff;
+    color: #000000;
+
+}
 
 .banner {
     background: linear-gradient(to right, #000000e5, #000000c5, transparent), url("../img/background.jpg");
@@ -42,7 +124,7 @@ a:hover {
 }
 
 .logo {
-    width: 600px;
+    width: 350px;
     height: 120px;
     background: url("../img/Oshi_No_Ko_Logo.png") no-repeat;
     background-size: contain;
@@ -56,6 +138,9 @@ header {
 header nav {
     display: flex;
     gap: 20px;
+}
+header nav a{
+    cursor: pointer;
 }
 
 nav a {
@@ -166,6 +251,12 @@ main {
 
 .tittle__section {
     font-size: 2rem;
+}
+
+.episodies,
+.elenco {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 /* Container Episodies */
@@ -504,6 +595,7 @@ footer {
         width: 600px;
         height: 120px;
     }
+
     .ruby__person,
     .aqua__person {
         display: block;

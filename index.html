@@ -12,6 +12,15 @@
     />
   </head>
   <body>
+    <div class="modal" id="modal__container">
+      <div class="modal__content">  
+          <span class="icon-close-close" id="button-close">X</span>
+        <h2>Aventura: El Código de la Estrella Oculta</h2> 
+        <div id="modal__content--message" class="modal__content--message">
+          
+        </div>
+      </div>
+    </div>
     <div class="banner" id="home">
       <header>
         <nav>
@@ -19,6 +28,7 @@
           <a href="#episodies">Episodios</a>
           <!-- <a href="#movie">Peliculas</a> -->
           <a href="#elenco">Elenco</a>
+          <a id="open-modal" >Jugar Aventura</a>
         </nav>
       </header>
       <div class="banner__container">
@@ -104,7 +114,7 @@
       <!-- <section id="movie">
         <h2>Pelicula</h2>
       </section> -->
-      <section id="elenco">
+      <section class="elenco" id="elenco">
         <h2 class="tittle__section">Elenco</h2>
         <div class="casts" id="casts"></div>
       </section>
