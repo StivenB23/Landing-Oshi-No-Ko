@@ -14,7 +14,9 @@
   <body>
     <div class="modal" id="modal__container">
       <div class="modal__content">  
-          <span class="icon-close-close" id="button-close">X</span>
+          <span class="icon-close-close" id="button-close">
+            <img src="./assets/img/icon-close.svg" alt="">
+          </span>
         <h2>Aventura: El Código de la Estrella Oculta</h2> 
         <div id="modal__content--message" class="modal__content--message">
           
@@ -26,7 +28,6 @@
         <nav>
           <a href="#home">Inicio</a>
           <a href="#episodies">Episodios</a>
-          <!-- <a href="#movie">Peliculas</a> -->
           <a href="#elenco">Elenco</a>
           <a id="open-modal" >Jugar Aventura</a>
         </nav>
@@ -35,7 +36,7 @@
         <div class="banner__information">
           <div class="logo"></div>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio quos
+            Lorem ipsum dolor sit, <b id="lead" lead="one" class="text__lead--shiny">Amor</b> amet consectetur adipisicing elit. Optio quos
             tempore magni quo ducimus! Ex nihil tenetur molestiae, iusto,
             temporibus alias quaerat laborum voluptate, nesciunt repellat
             pariatur. Odit nemo suscipit sint quas, eveniet cumque quisquam
@@ -47,7 +48,7 @@
           </p>
           <a class="button__banner" href="#episodies">Ver ahora</a>
         </div>
-        <div class="ruby__person">
+        <div class="ruby__person" id="lead" lead="three">
           <div class="star"></div>
           <div class="star"></div>
           <div class="star"></div>
@@ -64,7 +65,7 @@
           <div class="star"></div>
           <div class="star"></div>
         </div>
-        <div class="aqua__person">
+        <div class="aqua__person" id="lead" lead="two">
           <div class="star"></div>
           <div class="star"></div>
           <div class="star"></div>
@@ -88,6 +89,7 @@
         <h2 class="tittle__section">Episodios</h2>
         <article>
           <h3>Temporada 1</h3>
+          <button type="button" id="confetti-button">confeti</button>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel
             velit vel ipsum semper laoreet. Donec rutrum, nunc eu gravida
@@ -144,6 +146,7 @@
         <p>Copyright &copy; 2024 Proyecto Fandub.</p>
       </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="./assets/js/app.js"></script>
   </body>
 </html>

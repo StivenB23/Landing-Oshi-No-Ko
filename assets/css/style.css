@@ -33,12 +33,35 @@ a:hover {
     font-weight: 600;
 
 }
-button{
+
+button {
     border: none;
     outline: none;
 }
-input{
+
+input {
     outline: none;
+}
+
+/* Efectos */
+.text__lead--shiny {
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #ff00ff,
+    0 0 30px #ff00ff,
+    0 0 40px #ff00ff,
+    0 0 50px #ff00ff,
+    0 0 60px #ff00ff;
+    /* Sombras para dar efecto de brillo */
+    animation: glow 0.8s infinite alternate;
+    /* Animación de brillo */
+}
+.text__lead{
+    color: rgb(255, 33, 118);
+    font-weight: 600;
 }
 
 /* Modal */
@@ -55,41 +78,54 @@ input{
     justify-content: center;
     align-items: center;
     padding: 1.5rem;
-    
+
     z-index: 20;
 }
-.modal__content h2{
+
+.modal__content h2 {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 10px;
 }
-.icon-close-close{
+
+.icon-close-close {
     display: flex;
     justify-content: end;
-    font-size: 1.5rem;
-    color: #8b8b8b;
     cursor: pointer;
-
+    
 }
-.modal__content--message{
+.icon-close-close img {
+    width: 20px;
+    height: 20px;
+}
+
+.modal__content--message {
     text-align: justify;
 }
 
-.codeForm{
+.codeForm {
     display: flex;
-    /* justify-content: space-between; */
     gap: 0 5px;
     align-items: center;
-    
+
 }
-.codeForm input{
-    width: 5%;
-    padding: 10px;
+
+.codeForm input {
+    width: 6%;
+    padding: 8px;
     border: none;
+    text-align: center;
     font-weight: 800;
     font-size: 20px;
     border-bottom: 5px solid rgb(255, 33, 118);
-    /* border-radius: 5px; */
+}
+.codeForm .input__error {
+    color: rgb(245, 8, 8);
+    border-bottom: 5px solid rgb(241, 1, 1);
+}
+.codeForm .input__success {
+    color: rgb(45, 228, 100);
+    border-bottom: 5px solid rgb(45, 228, 100);
 }
 
 .button__primary {
@@ -110,6 +146,7 @@ input{
     font-weight: 600;
     color: #fff;
 }
+
 .button__secondary:hover {
     background-color: #ffffff;
     color: #000000;
@@ -139,7 +176,8 @@ header nav {
     display: flex;
     gap: 20px;
 }
-header nav a{
+
+header nav a {
     cursor: pointer;
 }
 
@@ -686,6 +724,30 @@ footer {
 
     50% {
         opacity: 0.5;
+    }
+}
+
+@keyframes glow {
+    0% {
+        text-shadow:
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 20px #ff00ff,
+            0 0 30px #ff00ff,
+            0 0 40px #ff00ff,
+            0 0 50px #ff00ff,
+            0 0 60px #ff00ff;
+    }
+
+    100% {
+        text-shadow:
+            0 0 10px #fff,
+            0 0 20px #fff,
+            0 0 30px #ff00ff,
+            0 0 40px #ff00ff,
+            0 0 50px #ff00ff,
+            0 0 60px #ff00ff,
+            0 0 70px #ff00ff;
     }
 }
 
