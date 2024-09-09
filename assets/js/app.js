@@ -52,7 +52,7 @@ CharactersSeries.forEach(person => {
 
 // Modo aventura 5 misiones
 
-let modeAventure = localStorage.getItem('modeAventure');
+let modeAventure = sessionStorage.getItem('modeAventure');
 const contentModal = document.getElementById('modal__content--message');
 if (modeAventure == null) {
     contentModal.innerHTML = `
@@ -76,7 +76,7 @@ if (modeAventure == "true") {
 }
 
 function modestateAventure(state) {
-    localStorage.setItem('modeAventure', state)
+    sessionStorage.setItem('modeAventure', state)
     if (state) {
         contentModal.innerHTML = `
         <p>El diario de Ai Hoshino contiene un código que puede revelar la verdad sobre su pasado, pero ha sido encriptado en un formato extraño. Solo quienes puedan descifrar las pistas repartidas en momentos clave de la serie podrán revelar el código. Cada pista te llevará a una parte del código encriptado, y solo cuando reúnas todas las piezas podrás resolver el enigma. <br> <b> Has aceptado el desafío, ahora solo queda saber si podrás superarlo. Deberás buscar en esta página 5 pistas y hacer clic sobre ellas para ver su contenido </b> </p>
