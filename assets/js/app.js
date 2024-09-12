@@ -177,7 +177,9 @@ function controllerConent() {
     if (stateModeGame == false) {
         contentModal.innerHTML = contentHTML.OptionNoGame;
     }
-    observerButton()
+    document.addEventListener('DOMContentLoaded', () => {
+        observerButton()
+    });
     openModal()
 }
 
@@ -187,7 +189,7 @@ document.getElementById('open-modal').addEventListener("click", controllerConent
 const leads = document.querySelectorAll('#lead')
 leads.forEach((lead) => {
     lead.addEventListener('click', (e) => {
-        if (stateModeGame != false) {
+        if (stateModeGame != false && stateModeGame != null) {
             let leanNumber = lead.getAttribute('lead')
             addClue(leanNumber)
             modalLead(leans[leanNumber].number, leans[leanNumber].message)
