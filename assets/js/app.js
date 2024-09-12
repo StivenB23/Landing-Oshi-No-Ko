@@ -1,6 +1,13 @@
 const containerEpisodiesTemp1 = document.getElementById('container-episodies-temp1');
 const containerEpisodiesTemp2 = document.getElementById('container-episodies-temp2');
 const containerCast = document.getElementById('casts');
+const contentModal = document.getElementById('modal__content--message');
+
+
+let stateModeGame = JSON.parse(sessionStorage.getItem('modeAventure'));
+let parsedClues = sessionStorage.getItem('cluesFound') !== null ? JSON.parse(sessionStorage.getItem('cluesFound')) : [];
+let numberCluesFound = new Set(parsedClues);
+
 const episodies1 = [
     {
         nombre: 'Capitulo 1',
@@ -24,6 +31,46 @@ const CharactersSeries = [
         imagen: 'https://i.pinimg.com/736x/41/01/2d/41012db60de94c749647173b21ce5d67.jpg'
     }
 ]
+
+const contentHTML = {
+    startGameQuestion: `<p>Estas a punto de iniciar una aventura. ¿Aceptas el desafio?</p>
+        <button onClick="modestateAventure(true)" class="button__primary">Sí</button><button onClick="modestateAventure(false)" class="button__secondary">No</button>`,
+    OptionNoGame: `<p><br>Al parecer no estas listo para la aventura</b> </p>`,
+    HistoryAndInstrucctions: ` <p>El diario de Ai Hoshino contiene un código que puede revelar la verdad sobre su pasado, pero ha sido encriptado en un formato extraño. Solo quienes puedan descifrar las pistas repartidas en momentos clave de la serie podrán revelar el código. Cada pista te llevará a una parte del código encriptado, y solo cuando reúnas todas las piezas podrás resolver el enigma. <br> <b> Has aceptado el desafío, ahora solo queda saber si podrás superarlo.</p>
+    <ul class="list__instruccions">
+        <li>Encuentra las 5 pistas ocultas en esta página web. (Dar clic)</li>
+        <li>Las pistas pueden ser palabras, imagenes...</li>
+        <li>Cuando encuentres todas las pistas el boton de abajo se activara</li>
+    </ul>
+    <button id="buttonEnterCode" onClick="showFormCode()" class="button__primary">Ingresar Código</button>
+     `,
+    formCode: `
+    <div class="container__codeForm">
+        <h5>Ingresa el Código</h5>
+        <form id="codeForm" class="codeForm">
+            <input type="text" id="digit1" placeholder="0" autocomplete="off" maxlength="1" oninput="moveToNext(this, 'digit2')" autofocus>
+            <input type="text" id="digit2" placeholder="0" autocomplete="off" maxlength="1" oninput="moveToNext(this, 'digit3')">
+            <input type="text" id="digit3" placeholder="0" autocomplete="off" maxlength="1" oninput="moveToNext(this, 'digit4')">
+            <input type="text" id="digit4" placeholder="0" autocomplete="off" maxlength="1" oninput="moveToNext(this, 'digit5')">
+            <input type="text" id="digit5" placeholder="0" autocomplete="off" maxlength="1">
+        </form>
+        <button type="button" onClick="validateCode()" class="button__primary">Validar Código</button>
+    </div>`,
+    congratulations: `
+    <div>
+        <h2>Felicidades!</h2>
+        <p>Has completado la aventura y has encontrado todas las pistas necesarias para descifrar el código. Aquí está tu código:</p>
+        <h1 class="code">12345</h1>
+        <p>Recuerda que solo podrás descifrar el código si lo encuentras en el momento clave de la serie. Como próximo paso, sigue leyendo el diario de Ai Hoshino para descubrir más detalles sobre su pasado y cómo lograrlo.</p>
+        <button onClick="resetGame()" class="button__primary">Volver a jugar</button>
+    </div>
+    </div>
+    `
+}
+
+function showFormCode() {
+    contentModal.innerHTML = contentHTML.formCode;
+}
 
 const leans = {
     'one': {
@@ -73,81 +120,78 @@ CharactersSeries.forEach(person => {
     containerCast.innerHTML += cardPerson
 })
 
+// Count Clues
+function addClue(clueNumber) {
+    numberCluesFound.add(clueNumber)
+    sessionStorage.setItem('cluesFound', JSON.stringify(Array.from(numberCluesFound.values())));
+}
+
 // Modo aventura 5 misiones
-
-let modeAventure = sessionStorage.getItem('modeAventure');
-const contentModal = document.getElementById('modal__content--message');
-if (modeAventure == null) {
-    contentModal.innerHTML = `
-        <p>Estas a punto de iniciar una aventura. ¿Aceptas el desafio?</p>
-        <button onClick="modestateAventure(true)" class="button__primary">Sí</button><button onClick="modestateAventure(false)" class="button__secondary">No</button>
-    `;
-}
-if (modeAventure == "true") {
-    contentModal.innerHTML = `
-        <p>El diario de Ai Hoshino contiene un código que puede revelar la verdad sobre su pasado, pero ha sido encriptado en un formato extraño. Solo quienes puedan descifrar las pistas repartidas en momentos clave de la serie podrán revelar el código. Cada pista te llevará a una parte del código encriptado, y solo cuando reúnas todas las piezas podrás resolver el enigma. <br> <b> Has aceptado el desafío, ahora solo queda saber si podrás superarlo. Deberás buscar en esta página web 5 pistas y hacer clic sobre ellas para ver su contenido </b> </p>
-        <div>
-    <h5>Ingresa el Código</h5>
-    <form id="codeForm" class="codeForm">
-        <input type="text" id="digit1" maxlength="1" oninput="moveToNext(this, 'digit2')" autofocus>
-        <input type="text" id="digit2" maxlength="1" oninput="moveToNext(this, 'digit3')">
-        <input type="text" id="digit3" maxlength="1" oninput="moveToNext(this, 'digit4')">
-        <input type="text" id="digit4" maxlength="1" oninput="moveToNext(this, 'digit5')">
-        <input type="text" id="digit5" maxlength="1">
-        <button type="button" onClick="validateCode()" class="button__primary">Enter</button>
-    </form>
-</div>
-    `;
-}
-
 function modestateAventure(state) {
+    stateModeGame = state
     sessionStorage.setItem('modeAventure', state)
     if (state) {
-        contentModal.innerHTML = `
-        <p>El diario de Ai Hoshino contiene un código que puede revelar la verdad sobre su pasado, pero ha sido encriptado en un formato extraño. Solo quienes puedan descifrar las pistas repartidas en momentos clave de la serie podrán revelar el código. Cada pista te llevará a una parte del código encriptado, y solo cuando reúnas todas las piezas podrás resolver el enigma. <br> <b> Has aceptado el desafío, ahora solo queda saber si podrás superarlo. Deberás buscar en esta página 5 pistas y hacer clic sobre ellas para ver su contenido </b> </p>
-        <div>
-    <h5>Ingresa el Código</h5>
-    <form id="codeForm" class="codeForm">
-        <input type="text" id="digit1" maxlength="1" oninput="moveToNext(this, 'digit2')" autofocus>
-        <input type="text" id="digit2" maxlength="1" oninput="moveToNext(this, 'digit3')">
-        <input type="text" id="digit3" maxlength="1" oninput="moveToNext(this, 'digit4')">
-        <input type="text" id="digit4" maxlength="1" oninput="moveToNext(this, 'digit5')">
-        <input type="text" id="digit5" maxlength="1">
-        <button type="button" onClick="validateCode()" class="button__primary">Enter</button>
-    </form>
-    </div>`
+        contentModal.innerHTML = contentHTML.HistoryAndInstrucctions;
     } else {
-        contentModal.innerHTML = `
-        <p><br>Al parecer no estas listo para la aventura</b> </p>`
+        contentModal.innerHTML = contentHTML.OptionNoGame;
     }
 }
+
 function moveToNext(current, nextFieldID) {
     if (current.value.length >= 1) {
         document.getElementById(nextFieldID).focus();
     }
 }
+
 function openModal() {
     document.getElementById('modal__container').style.display = 'block';
 }
+
 function closeModal() {
     document.getElementById('modal__container').style.display = 'none';
 }
+
 function modalLead(numberLead, contentHTML) {
     contentModal.innerHTML = `
         <h4 class="text__lead">Pista ${numberLead}</h4>
         ${contentHTML}`
     openModal()
 }
+function observerButton() {
+    const input = document.getElementById('buttonEnterCode');
+    if (numberCluesFound.size == 5) {
+        console.log("remove");
+
+        input.removeAttribute('disabled');
+        return;
+    }
+    input.setAttribute('disabled', true);
+}
+function controllerConent() {
+    if (stateModeGame === null) {
+        contentModal.innerHTML = contentHTML.startGameQuestion;
+    }
+    if (stateModeGame) {
+        contentModal.innerHTML = contentHTML.HistoryAndInstrucctions;
+    }
+    if (stateModeGame == false) {
+        contentModal.innerHTML = contentHTML.OptionNoGame;
+    }
+    observerButton()
+    openModal()
+}
 
 document.getElementById('button-close').addEventListener("click", closeModal)
-document.getElementById('open-modal').addEventListener("click", openModal)
+document.getElementById('open-modal').addEventListener("click", controllerConent)
 
 const leads = document.querySelectorAll('#lead')
 leads.forEach((lead) => {
     lead.addEventListener('click', (e) => {
-        let leanNumber = lead.getAttribute('lead')
-
-        modalLead(leans[leanNumber].number, leans[leanNumber].message)
+        if (stateModeGame != false) {
+            let leanNumber = lead.getAttribute('lead')
+            addClue(leanNumber)
+            modalLead(leans[leanNumber].number, leans[leanNumber].message)
+        }
     });
 });
 
@@ -167,9 +211,10 @@ function validateCode() {
             .catch((error) => {
                 console.error('Error al reproducir el audio:', error);
             });
+        contentModal.innerHTML = contentHTML.congratulations
     } else {
         inputs.forEach((input) => {
-            input.classList.toggle('input__error')
+            input.classList.add('input__error')
         });
         const audioError = new Audio("http://127.0.0.1:5500/assets/audio/audio_error.mp3");
         audioError.play()
@@ -177,6 +222,12 @@ function validateCode() {
                 console.error('Error al reproducir el audio:', error);
             });
     }
+}
+
+function resetGame() {
+    sessionStorage.clear('modeAventure')
+    sessionStorage.clear('cluesFound')
+    closeModal()
 }
 
 // Definir duración y fin de la animación
@@ -213,6 +264,3 @@ const startConfetti = () => {
         });
     }, 250);
 };
-
-// Agregar un event listener al botón para iniciar la animación
-document.getElementById('confetti-button').addEventListener('click', startConfetti);
