@@ -29,6 +29,16 @@ const CharactersSeries = [
         personaje: 'Rubi',
         actor: '...',
         imagen: 'https://i.pinimg.com/736x/41/01/2d/41012db60de94c749647173b21ce5d67.jpg'
+    },
+    {
+        personaje: 'Ai Hoshino',
+        actor: '...',
+        imagen: 'https://i.pinimg.com/736x/30/ed/83/30ed839c04e2ad2c7fabcbb534c4df52.jpg'
+    },
+    {
+        personaje: 'Memcho',
+        actor: 'Cristall',
+        imagen: 'https://i.pinimg.com/736x/11/da/e7/11dae78a41252b48bf7875ba0fab0e4b.jpg'
     }
 ]
 
