@@ -37,7 +37,7 @@ const CharactersSeries = [
     },
     {
         personaje: 'Memcho',
-        actor: 'Cristall',
+        actor: 'Crisstal',
         imagen: 'https://i.pinimg.com/736x/11/da/e7/11dae78a41252b48bf7875ba0fab0e4b.jpg'
     }
 ]
