@@ -48,11 +48,11 @@ const contentHTML = {
     OptionNoGame: `<p><br>Al parecer no estas listo para la aventura</b> </p>`,
     HistoryAndInstrucctions: ` <p>El diario de Ai Hoshino contiene un código que puede revelar la verdad sobre su pasado, pero ha sido encriptado en un formato extraño. Solo quienes puedan descifrar las pistas repartidas en momentos clave de la serie podrán revelar el código. Cada pista te llevará a una parte del código encriptado, y solo cuando reúnas todas las piezas podrás resolver el enigma. <br> <b> Has aceptado el desafío, ahora solo queda saber si podrás superarlo.</p>
     <ul class="list__instruccions">
-        <li>Encuentra las 5 pistas ocultas en esta página web. (Dar clic)</li>
-        <li>Las pistas pueden ser palabras, imagenes...</li>
-        <li>Cuando encuentres todas las pistas el boton de abajo se activara</li>
+        <li>Encuentra las 5 pistas ocultas en esta página web. (Haz clic en los diferentes elementos).</li>
+        <li>Las pistas pueden ser palabras, imágenes o cualquier otro objeto.</li>
+        <li>Cuando encuentres todas las pistas, el botón de abajo se activará.</li>
     </ul>
-    <button id="buttonEnterCode" onClick="showFormCode()" class="button__primary">Ingresar Código</button>
+    <button id="buttonEnterCode" disabled onClick="showFormCode()" class="button__primary">Ingresar Código</button>
      `,
     formCode: `
     <div class="container__codeForm">
@@ -64,7 +64,7 @@ const contentHTML = {
             <input type="text" id="digit4" placeholder="0" autocomplete="off" maxlength="1" oninput="moveToNext(this, 'digit5')">
             <input type="text" id="digit5" placeholder="0" autocomplete="off" maxlength="1">
         </form>
-        <button type="button" onClick="validateCode()" class="button__primary">Validar Código</button>
+        <button type="button"  onClick="validateCode()" class="button__primary">Validar Código</button>
     </div>`,
     congratulations: `
     <div>
@@ -175,7 +175,7 @@ function observerButton() {
         input.removeAttribute('disabled');
         return;
     }
-    input.setAttribute('disabled', true);
+
 }
 function controllerConent() {
     if (stateModeGame === null) {
@@ -187,9 +187,8 @@ function controllerConent() {
     if (stateModeGame == false) {
         contentModal.innerHTML = contentHTML.OptionNoGame;
     }
-    document.addEventListener('DOMContentLoaded', () => {
-        observerButton()
-    });
+   
+    observerButton()
     openModal()
 }
 
