@@ -22,23 +22,29 @@ const episodies1 = [
 const CharactersSeries = [
     {
         personaje: 'Aqua',
-        actor: 'Vestall',
+        actor: 'Freddie',
         imagen: 'https://imagedelivery.net/5ejkUOtsMH5sf63fw6q33Q/1cb4d6b9-e7e9-40f5-bc8c-6be782d47a00/public'
     },
     {
         personaje: 'Rubi',
-        actor: '...',
+        actor: 'Yan',
         imagen: 'https://i.pinimg.com/736x/41/01/2d/41012db60de94c749647173b21ce5d67.jpg'
     },
     {
         personaje: 'Ai Hoshino',
-        actor: '...',
+        actor: 'Name',
         imagen: 'https://i.pinimg.com/736x/30/ed/83/30ed839c04e2ad2c7fabcbb534c4df52.jpg'
     },
     {
         personaje: 'Memcho',
         actor: 'Crisstal',
         imagen: 'https://i.pinimg.com/736x/11/da/e7/11dae78a41252b48bf7875ba0fab0e4b.jpg'
+    }
+    ,
+    {
+        personaje: 'Kana Arima',
+        actor: 'Lumy',
+        imagen: 'https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/47f68a11-045e-405b-a73b-77f15538ce10/width=450/kanaarima-2279058996.jpeg'
     }
 ]
 
