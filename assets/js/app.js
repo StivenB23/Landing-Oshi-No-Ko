@@ -95,15 +95,15 @@ const leans = {
     },
     'two': {
         number: '2',
-        message: '<p>La segunda pista ... </b></p>'
+        message: '<p><b><small class="text__lead">Ten en cuenta el número en las opciones de respuesta</small> <br> ¿Qué profesión desea tener Aqua durante la serie? </b><small>Manga Capítulo 83</small> <br> <br> 2) Actor <br> 7) Médico <br> 6) Productor <br> 8) Profesor <br> </p>'
     },
     'three': {
         number: '3',
-        message: '<p>La tercera pista ... </b></p>'
+        message: '<p><b><small class="text__lead">Ten en cuenta el número en las opciones de respuesta</small><br> ¿Qué evento desencadena que Ruby descubra la verdadera identidad de Gorou Amemiya y su relación con ella? </b> <small>Manga Capítulo 122</small> <br> <br> 4) Encuentra el diario de Gorou con detalles de su vida pasada <br> 0) Aqua revela la verdad para frenar sus planes de venganza <br> 3)  Ruby tiene un flashback de su vida pasada al ver un antiguo video <br> 6) Se lo confiesa la madre adoptiva de AI </p>'
     },
     'four': {
         number: '4',
-        message: '<p>La cuarta pista ... </b></p>'
+        message: '<p><b><small class="text__lead">Ten en cuenta el número en las opciones de respuesta</small><br> ¿Por qué Mem-cho decide unirse a B-komachi, a pesar de haber alcanzado ya una gran oportunidad como influencer? </b> <br> <br> 4) Por lealtad a Ai Hoshino <br> 1) Por el deseo de cumplir con un sueño que tenía desde pequeña <br> 6) Por una oferta económica muy tentadora <br> 7) Porque Aqua la convence e que será beneficioso para su carrera  </p>'
     },
     'five': {
         number: '5',
