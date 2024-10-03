@@ -103,11 +103,11 @@ const leans = {
     },
     'four': {
         number: '4',
-        message: '<p><b><small class="text__lead">Ten en cuenta el número en las opciones de respuesta</small><br> ¿Por qué Mem-cho decide unirse a B-komachi, a pesar de haber alcanzado ya una gran oportunidad como influencer? </b> <br> <br> 4) Por lealtad a Ai Hoshino <br> 1) Por el deseo de cumplir con un sueño que tenía desde pequeña <br> 6) Por una oferta económica muy tentadora <br> 7) Porque Aqua la convence e que será beneficioso para su carrera  </p>'
+        message: '<p><b><small class="text__lead">Ten en cuenta el número en las opciones de respuesta</small><br> ¿Por qué Mem-cho decide unirse a B-komachi, a pesar de haber alcanzado ya una gran oportunidad como influencer? </b> <br> <br> 4) Por lealtad a Ai Hoshino <br> 2) Por el deseo de cumplir con un sueño que tenía desde pequeña <br> 6) Por una oferta económica muy tentadora <br> 7) Porque Aqua la convence e que será beneficioso para su carrera  </p>'
     },
     'five': {
         number: '5',
-        message: '<p>La quinta pista ... </b></p>'
+        message: '<p>Un recuerdo muy preciado para Ai fue cuando compartió momentos inolvidables con sus hijos.<b> En la fiesta de cumpleaños, cuenta cuántos años cumplían los gemelos en ese lindo suceso.</b> Este número será el último dígito del código</p>'
     }
 }
 
@@ -213,12 +213,12 @@ leads.forEach((lead) => {
 });
 
 // Code Secret
-const KEY_SECRET = 56789444;
+const KEY_SECRET = 12345678;
 function validateCode() {
     const inputs = document.querySelectorAll('#codeForm input')
     let inputCode = document.getElementById('digit1').value + document.getElementById('digit2').value + document.getElementById('digit3').value + document.getElementById('digit4').value + document.getElementById('digit5').value;
     const numeroOfuscado = parseInt(inputCode) ^ KEY_SECRET;
-    if (numeroOfuscado == 56772122) {
+    if (numeroOfuscado == 12412035) {
         inputs.forEach((input) => {
             input.classList.toggle('input__success')
         });
